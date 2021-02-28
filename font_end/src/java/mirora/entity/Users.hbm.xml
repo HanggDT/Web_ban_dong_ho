@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Users" table="Users" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="UserId" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="UserName" />
+        </property>
+        <property name="userPassword" type="string">
+            <column name="UserPassword" length="16" />
+        </property>
+        <property name="gender" type="java.lang.Boolean">
+            <column name="Gender" />
+        </property>
+        <property name="mail" type="string">
+            <column name="Mail" length="100" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="10" />
+        </property>
+        <property name="userAddress" type="string">
+            <column name="UserAddress" length="200" />
+        </property>
+        <property name="userStatus" type="java.lang.Boolean">
+            <column name="UserStatus" />
+        </property>
+        <property name="permission" type="java.lang.Boolean">
+            <column name="Permission" />
+        </property>
+        <set name="orderses" table="Orders" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserId" />
+            </key>
+            <one-to-many class="mirora.entity.Orders" />
+        </set>
+        <set name="comments" table="Comment" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserId" />
+            </key>
+            <one-to-many class="mirora.entity.Comment" />
+        </set>
+        <set name="starses" table="Stars" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="mirora.entity.Stars" />
+        </set>
+        <set name="favorites" table="Favorite" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="mirora.entity.Favorite" />
+        </set>
+    </class>
+</hibernate-mapping>

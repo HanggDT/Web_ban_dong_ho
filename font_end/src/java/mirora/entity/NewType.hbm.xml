@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.NewType" table="NewType" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="newsTypeId" type="string">
+            <column name="NewsTypeID" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="typeName" type="serializable">
+            <column name="TypeName" />
+        </property>
+        <property name="newsTypeStatus" type="java.lang.Boolean">
+            <column name="NewsTypeStatus" />
+        </property>
+        <set name="newses" table="News" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NewsTypeID" length="10" />
+            </key>
+            <one-to-many class="mirora.entity.News" />
+        </set>
+    </class>
+</hibernate-mapping>

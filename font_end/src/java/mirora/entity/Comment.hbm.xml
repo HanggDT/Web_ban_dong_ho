@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Comment" table="Comment" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="commentId" type="int">
+            <column name="CommentId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="mirora.entity.Product" lazy="false" fetch="select">
+            <column name="ProductID" length="5" />
+        </many-to-one>
+        <many-to-one name="users" class="mirora.entity.Users" fetch="select" lazy="false">
+            <column name="UserId" />
+        </many-to-one>
+        <property name="createdateComment" type="date">
+            <column name="CreatedateComment" />
+        </property>
+        <property name="commentContent" type="string">
+            <column name="CommentContent" />
+        </property>
+        <property name="parentId" type="java.lang.Integer">
+            <column name="ParentId" />
+        </property>
+        <property name="commentStatus" type="java.lang.Boolean">
+            <column name="CommentStatus" />
+        </property>
+    </class>
+</hibernate-mapping>

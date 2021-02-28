@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.ProductDetail" table="ProductDetail" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="productDetailId" type="int">
+            <column name="ProductDetailID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="colors" class="mirora.entity.Colors" lazy="false" fetch="select">
+            <column name="ColorID" />
+        </many-to-one>
+        <many-to-one name="product" class="mirora.entity.Product" fetch="select">
+            <column name="ProductID" length="5" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="productDtStatus" type="java.lang.Boolean">
+            <column name="ProductDtStatus" />
+        </property>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductDetailID" />
+            </key>
+            <one-to-many class="mirora.entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

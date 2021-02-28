@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Banner" table="Banner" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="bannerId" type="int">
+            <column name="BannerID" />
+            <generator class="identity" />
+        </id>
+        <property name="bannerName" type="string">
+            <column name="BannerName" length="100" />
+        </property>
+        <property name="imagelink" type="string">
+            <column name="Imagelink" length="100" />
+        </property>
+        <property name="bannerLink" type="string">
+            <column name="BannerLink" length="100" />
+        </property>
+        <property name="bannerPriority" type="java.lang.Integer">
+            <column name="BannerPriority" />
+        </property>
+        <property name="bannerStatus" type="java.lang.Boolean">
+            <column name="BannerStatus" />
+        </property>
+    </class>
+</hibernate-mapping>

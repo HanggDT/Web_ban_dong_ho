@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.SystemWatch" table="SystemWatch" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="systemId" type="int">
+            <column name="SystemID" />
+            <generator class="assigned" />
+        </id>
+        <property name="systemName" type="string">
+            <column name="SystemName" length="100" />
+        </property>
+        <property name="systemvalue" type="serializable">
+            <column name="Systemvalue" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Product" table="Product" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="productId" type="string">
+            <column name="ProductID" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="productName" type="string">
+            <column name="ProductName" unique="true" />
+        </property>
+        <property name="title" type="string">
+            <column name="Title" />
+        </property>
+        <property name="productDescription" type="string">
+            <column name="ProductDescription" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="CreatedDate" />
+        </property>
+        <property name="imageMain" type="string">
+            <column name="ImageMain" length="100" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="Discount" precision="53" scale="0" />
+        </property>
+        <property name="productView" type="java.lang.Integer">
+            <column name="ProductView" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="Price" precision="53" scale="0" />
+        </property>
+        <property name="productStatus" type="java.lang.Boolean">
+            <column name="ProductStatus" />
+        </property>
+        <set name="starses" table="Stars" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.Stars" />
+        </set>
+        <set name="comments" table="Comment" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.Comment" />
+        </set>
+        <set name="imageses" table="Images" inverse="true" lazy="false" cascade="all" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.Images" />
+        </set>
+        <set name="favorites" table="Favorite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.Favorite" />
+        </set>
+        <set name="productDetails" table="ProductDetail" inverse="true" lazy="false" cascade="all" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.ProductDetail" />
+        </set>
+        <set name="catProducts" table="CatProduct" inverse="true" lazy="false" cascade="all" fetch="select">
+            <key>
+                <column name="ProductID" length="5" />
+            </key>
+            <one-to-many class="mirora.entity.CatProduct" />
+        </set>
+    </class>
+</hibernate-mapping>

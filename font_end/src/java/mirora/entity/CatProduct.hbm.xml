@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.CatProduct" table="CatProduct" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="catProId" type="int">
+            <column name="CatProId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categories" class="mirora.entity.Categories" lazy="false" fetch="select">
+            <column name="CatId" />
+        </many-to-one>
+        <many-to-one name="product" class="mirora.entity.Product" fetch="select">
+            <column name="ProductID" length="5" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Favorite" table="Favorite" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="favoriteId" type="int">
+            <column name="FavoriteID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="mirora.entity.Product" lazy="false" fetch="select">
+            <column name="ProductID" length="5" />
+        </many-to-one>
+        <many-to-one name="users" class="mirora.entity.Users" fetch="select">
+            <column name="UserID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

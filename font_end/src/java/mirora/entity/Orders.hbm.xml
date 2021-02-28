@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Orders" table="Orders" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="orderId" type="int">
+            <column name="OrderId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="mirora.entity.Users" lazy="false" fetch="select">
+            <column name="UserId" />
+        </many-to-one>
+        <property name="createdDate" type="date">
+            <column name="CreatedDate" />
+        </property>
+        <property name="totalAmount" type="java.lang.Float">
+            <column name="TotalAmount" precision="53" scale="0" />
+        </property>
+        <property name="orderStatus" type="java.lang.Boolean">
+            <column name="OrderStatus" />
+        </property>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false"  cascade="all" fetch="select">
+            <key>
+                <column name="OrderId" />
+            </key>
+            <one-to-many class="mirora.entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

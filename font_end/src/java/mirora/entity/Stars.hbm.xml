@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 4, 2020 4:35:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mirora.entity.Stars" table="Stars" schema="dbo" catalog="DB_Watch_Master" optimistic-lock="version">
+        <id name="starId" type="int">
+            <column name="StarID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="product" class="mirora.entity.Product" fetch="select">
+            <column name="ProductID" length="5" />
+        </many-to-one>
+        <many-to-one name="users" class="mirora.entity.Users" fetch="select">
+            <column name="UserID" />
+        </many-to-one>
+        <property name="mark" type="java.lang.Integer">
+            <column name="Mark" />
+        </property>
+    </class>
+</hibernate-mapping>
